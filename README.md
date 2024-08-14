@@ -273,3 +273,22 @@ local Keybind = Tabs.Main:AddKeybind("Keybind", {
 ```
 Keybind:SetValue("MB2", "Toggle")
 ```
+
+# Create TextBox
+
+```
+local Input = Tabs.Main:AddInput("Input", {
+        Title = "Input",
+        Default = "Default",
+        Placeholder = "Placeholder",
+        Numeric = false, -- Only allows numbers
+        Finished = false, -- Only calls callback when you press enter
+        Callback = function(Value)
+            print("Input changed:", Value)
+        end
+    })
+
+    Input:OnChanged(function()
+        print("Input updated:", Input.Value)
+    end)
+```
