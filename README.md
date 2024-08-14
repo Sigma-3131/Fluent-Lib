@@ -133,3 +133,53 @@ local Slider = Tabs.Main:AddSlider("Slider", {
 Slider:SetValue(3)
 ```
 
+# Create Dropdown
+
+```
+local Dropdown = Tabs.Main:AddDropdown("Dropdown", {
+    Title = "Dropdown",
+  Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+    Multi = false,
+    Default = 1,
+   })
+
+  Dropdown:OnChanged(function(Value)
+    print("Dropdown changed:", Value)
+    end)
+```
+
+# Update Dropdown Value
+
+```
+Dropdown:SetValue("four")
+```
+
+# Create Multi Dropdown
+
+```
+local MultiDropdown = Tabs.Main:AddDropdown("MultiDropdown", {
+    Title = "Dropdown",
+     Description = "You can select multiple values.",
+   Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+      Multi = true,
+      Default = {"seven", "twelve"},
+    })
+
+   MultiDropdown:OnChanged(function(Value)
+   local Values = {}
+    for Value, State in next, Value do
+         table.insert(Values, Value)
+      end
+   print("Mutlidropdown changed:", table.concat(Values, ", "))
+    end)
+```
+
+# Update Multi Dropdown Value
+
+```
+MultiDropdown:SetValue({
+        three = true,
+        five = true,
+        seven = false
+    })
+```
